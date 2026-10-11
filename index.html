@@ -3,54 +3,461 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>my outfit ✨</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f9f7f2">
+<meta name="description" content="Temukan inspirasi fashion dan outfit pilihanmu di my outfit.">
+<title>my outfit ✨ | Everyday Style</title>
+
 <style>
-body{margin:0;font-family:Arial,sans-serif;color:#222;background:#fff}
-header{padding:22px;text-align:center;border-bottom:1px solid #eee}
-h1{margin:0}
-.hero{padding:35px 20px;text-align:center;background:#f5f5f5}
-.hero h2{font-size:30px}
-.search{padding:20px;display:flex;gap:10px;flex-wrap:wrap}
-input,select{padding:12px;border:1px solid #ddd;border-radius:8px;flex:1;min-width:120px}
-.products{padding:0 15px 25px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.card{border:1px solid #eee;border-radius:10px;overflow:hidden}
-.card img{width:100%;height:160px;object-fit:cover}
-.card div{padding:10px}
-.card h3{font-size:16px}
-.card p{color:#666;font-size:13px}
-.card a{display:block;background:#222;color:white;text-decoration:none;text-align:center;padding:10px;border-radius:6px;font-size:13px}
-footer{text-align:center;padding:22px;background:#f5f5f5}
-@media(min-width:700px){.products{grid-template-columns:repeat(4,1fr)}}
+:root {
+  --cream: #f9f7f2;
+  --white: #ffffff;
+  --black: #20201e;
+  --muted: #77746e;
+  --line: #e9e5dd;
+  --accent: #b39a7c;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--black);
+  background: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+.top-note {
+  padding: 10px 15px;
+  text-align: center;
+  background: var(--black);
+  color: white;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  max-width: 1150px;
+  min-height: 76px;
+  margin: auto;
+  padding: 15px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.logo {
+  text-decoration: none;
+  font-family: Georgia, serif;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+
+.logo span { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+.hero {
+  background: var(--cream);
+  padding: 55px 24px 60px;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 35px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(40px, 6vw, 70px);
+  font-weight: normal;
+  line-height: 1.08;
+  letter-spacing: -2px;
+  margin: 18px 0;
+}
+
+.hero h1 em {
+  font-weight: normal;
+  color: var(--accent);
+}
+
+.hero p {
+  max-width: 380px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.hero-button {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 15px 23px;
+  background: var(--black);
+  color: white;
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 1px;
+  transition: background .2s;
+}
+
+.hero-button:hover { background: #665748; }
+
+.hero-image {
+  width: 100%;
+  max-height: 390px;
+  object-fit: cover;
+  display: block;
+  background: #eee7dc;
+}
+
+.collection {
+  max-width: 1150px;
+  margin: auto;
+  padding: 65px 24px;
+}
+
+.section-head {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.section-head h2 {
+  font-family: Georgia, serif;
+  font-size: 34px;
+  font-weight: normal;
+  margin: 12px 0;
+}
+
+.section-head p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.tools {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.tools input, .tools select {
+  min-width: 0;
+  padding: 13px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  color: var(--black);
+  font: inherit;
+  font-size: 12px;
+}
+
+.tools input { flex: 1; }
+.tools select { width: 155px; }
+
+.tools input:focus, .tools select:focus {
+  outline: 1px solid var(--accent);
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px 16px;
+}
+
+.card { min-width: 0; }
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  display: block;
+  object-fit: cover;
+  background: var(--cream);
+}
+
+.product-info { padding: 13px 2px; }
+
+.product-category {
+  color: var(--accent);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.product-info h3 {
+  margin: 8px 0;
+  font-family: Georgia, serif;
+  font-size: 17px;
+  font-weight: normal;
+}
+
+.product-info p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.product-link {
+  display: block;
+  margin-top: 13px;
+  padding: 12px 5px;
+  text-align: center;
+  background: var(--black);
+  color: white;
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.product-link:hover { background: #665748; }
+
+.empty {
+  grid-column: 1 / -1;
+  padding: 35px 10px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.about {
+  padding: 55px 24px;
+  text-align: center;
+  background: var(--cream);
+}
+
+.about h2 {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.about p {
+  max-width: 500px;
+  margin: 15px auto;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+footer {
+  padding: 35px 20px;
+  text-align: center;
+  background: var(--black);
+  color: white;
+}
+
+.footer-logo {
+  font-family: Georgia, serif;
+  font-size: 24px;
+}
+
+footer p {
+  color: #c8c4bc;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+footer a { color: white; }
+
+@media (max-width: 760px) {
+  .nav { min-height: 65px; padding: 12px 17px; }
+  .logo { font-size: 21px; }
+  .nav-links { gap: 13px; }
+  .nav-links a { font-size: 11px; }
+  .hero { padding: 35px 19px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 25px; }
+  .hero h1 { font-size: 48px; }
+  .hero-image { max-height: 300px; }
+  .collection { padding: 48px 16px; }
+  .products { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 12px; }
+  .product-info h3 { font-size: 16px; }
+  .tools select { width: 125px; }
+}
+
+@media (max-width: 360px) {
+  .nav { padding: 12px 10px; }
+  .logo { font-size: 18px; }
+  .nav-links { gap: 9px; }
+  .nav-links a { font-size: 10px; }
+  .hero h1 { font-size: 41px; }
+}
 </style>
 </head>
+
 <body>
-<header><h1>my outfit ✨</h1><p>Your everyday style</p></header>
-<section class="hero">
-<h2>Find Your Style.</h2>
-<p>Temukan inspirasi outfit favoritmu di sini.</p>
+<div class="top-note">YOUR EVERYDAY STYLE DESTINATION</div>
+
+<header>
+  <nav class="nav">
+    <a class="logo" href="#">my outfit <span>✦</span></a>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#collection">Collection</a>
+      <a href="#about">About</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Style made simple</div>
+      <h1>Find your<br><em>own style.</em></h1>
+      <p>Temukan inspirasi outfit favoritmu. Pilihan fashion untuk menemani setiap cerita dan keseharianmu.</p>
+      <a class="hero-button" href="#collection">EXPLORE COLLECTION ↗</a>
+    </div>
+    <img class="hero-image"
+      src="https://placehold.co/700x800/eee5d8/655747?text=YOUR+STYLE"
+      alt="Inspirasi gaya fashion">
+  </div>
 </section>
-<div class="search">
-<input id="search" placeholder="Cari produk..." oninput="showProducts()">
-<select id="category" onchange="showProducts()">
-<option>Semua</option><option>Atasan</option><option>Bawahan</option><option>Sepatu</option><option>Aksesori</option>
-</select>
-</div>
-<main class="products" id="products"></main>
-<footer>my outfit ✨ · Temukan gaya favoritmu</footer>
+
+<section class="collection" id="collection">
+  <div class="section-head">
+    <div class="eyebrow">Curated for you</div>
+    <h2>The Collection</h2>
+    <p>Temukan pilihan yang cocok dengan gayamu.</p>
+  </div>
+
+  <div class="tools">
+    <input id="search" type="search" placeholder="Cari produk..." aria-label="Cari produk">
+    <select id="category" aria-label="Filter kategori">
+      <option value="Semua">Semua kategori</option>
+      <option value="Atasan">Atasan</option>
+      <option value="Bawahan">Bawahan</option>
+      <option value="Sepatu">Sepatu</option>
+      <option value="Aksesori">Aksesori</option>
+    </select>
+  </div>
+
+  <div class="products" id="products"></div>
+</section>
+
+<section class="about" id="about">
+  <div class="eyebrow">A little about us</div>
+  <h2>Wear what feels like you.</h2>
+  <p>my outfit ✨ adalah tempat menemukan inspirasi fashion simpel dan elegan. Pilih favoritmu dan temukan gaya yang terasa paling kamu.</p>
+</section>
+</main>
+
+<footer>
+  <div class="footer-logo">my outfit ✨</div>
+  <p>Your style, your story.</p>
+  <p>Instagram: <a href="https://instagram.com/" target="_blank" rel="noopener">@instagramkamu</a></p>
+  <p>© 2026 my outfit. Made with love.</p>
+</footer>
+
 <script>
-const items=[
-["Basic Top","Atasan","https://placehold.co/400x500/f3f3f3/222?text=Basic+Top"],
-["Everyday Pants","Bawahan","https://placehold.co/400x500/e8e8e8/222?text=Pants"],
-["Daily Sneakers","Sepatu","https://placehold.co/400x500/f3f3f3/222?text=Sneakers"],
-["Simple Bag","Aksesori","https://placehold.co/400x500/e8e8e8/222?text=Bag"]
+const products = [
+  {
+    name: "Basic Top",
+    category: "Atasan",
+    description: "Pilihan simpel untuk gaya sehari-hari.",
+    image: "https://placehold.co/600x800/f0e9df/55483d?text=Basic+Top",
+    link: "https://shopee.co.id/"
+  },
+  {
+    name: "Everyday Pants",
+    category: "Bawahan",
+    description: "Mudah dipadukan dengan outfit favorit.",
+    image: "https://placehold.co/600x800/e8e3da/55483d?text=Everyday+Pants",
+    link: "https://shopee.co.id/"
+  },
+  {
+    name: "Daily Sneakers",
+    category: "Sepatu",
+    description: "Teman nyaman untuk aktivitasmu.",
+    image: "https://placehold.co/600x800/f0e9df/55483d?text=Daily+Sneakers",
+    link: "https://shopee.co.id/"
+  },
+  {
+    name: "Simple Bag",
+    category: "Aksesori",
+    description: "Sentuhan akhir untuk penampilanmu.",
+    image: "https://placehold.co/600x800/e8e3da/55483d?text=Simple+Bag",
+    link: "https://shopee.co.id/"
+  }
 ];
-function showProducts(){
-let q=document.getElementById("search").value.toLowerCase();
-let c=document.getElementById("category").value;
-document.getElementById("products").innerHTML=items.filter(x=>(x[0].toLowerCase().includes(q)||x[1].toLowerCase().includes(q))&&(c==="Semua"||x[1]===c)).map(x=>`<article class="card"><img src="${x[2]}" alt="${x[0]}"><div><h3>${x[0]}</h3><p>${x[1]}</p><a href="https://shopee.co.id/" target="_blank">Lihat produk</a></div></article>`).join("");
+
+function showProducts() {
+  const query = document.getElementById("search").value.toLowerCase().trim();
+  const category = document.getElementById("category").value;
+  const container = document.getElementById("products");
+
+  const filtered = products.filter(product => {
+    const matchesSearch =
+      (product.name + " " + product.category).toLowerCase().includes(query);
+    const matchesCategory =
+      category === "Semua" || product.category === category;
+    return matchesSearch && matchesCategory;
+  });
+
+  if (!filtered.length) {
+    container.innerHTML = '<p class="empty">Produk tidak ditemukan. Coba kata lain, ya.</p>';
+    return;
+  }
+
+  container.innerHTML = filtered.map(product => `
+    <article class="card">
+      <img class="product-image"
+        src="${product.image}"
+        alt="${product.name}"
+        loading="lazy">
+      <div class="product-info">
+        <div class="product-category">${product.category}</div>
+        <h3>${product.name}</h3>
+        <p>${product.description}</p>
+        <a class="product-link"
+          href="${product.link}"
+          target="_blank"
+          rel="noopener">VIEW PRODUCT ↗</a>
+      </div>
+    </article>
+  `).join("");
 }
+
+document.getElementById("search").addEventListener("input", showProducts);
+document.getElementById("category").addEventListener("change", showProducts);
 showProducts();
 </script>
 </body>
 </html>
+
